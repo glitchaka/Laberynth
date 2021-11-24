@@ -4,11 +4,11 @@ import java.awt.event.KeyEvent;
 
 public class Personaje {
     Laberinto maze= new Laberinto();
-    private int x = 40;
-    private int y = 40;
-    private final int ancho = 40;
-    private final int alto = 40;
-    private final int movimiento = 40;
+    private int x = 10;
+    private int y = 10;
+    private final int ancho = 10;
+    private final int alto = 10;
+    private final int movimiento = 10;
    
     public void paint(Graphics g){
         g.setColor(Color.RED);
@@ -18,17 +18,27 @@ public class Personaje {
     }
 
     public void teclaPresionada(KeyEvent event){
+        int [][]laberinto = maze.obtieneLaberinto();
         if(event.getKeyCode() == 37){//IZQUIERDA
-            x -= movimiento;
+            if(laberinto[y/10][x/10-1] == 0){
+                x -= movimiento;
+            }
         }
         if(event.getKeyCode() == 39){//DERECHA
-            x += movimiento;
+            if(laberinto[y/10][x/10+1] == 0){
+                x += movimiento;
+            }
         }
         if(event.getKeyCode() == 40){//ABAJO
-            y += movimiento;
+            if(laberinto[y/10+1][x/10] == 0){
+                y += movimiento;
+            }
         }
         if(event.getKeyCode() == 38){//ARRIBA
-            y -= movimiento;
+            if(laberinto[y/10-1][x/10] == 0){
+                y -= movimiento;
+            }
+            
         }
     }
     
