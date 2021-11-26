@@ -28,6 +28,7 @@ public class Juego extends JPanel{
 
     @Override
     public void paint(Graphics g){
+        super.paintComponent(g);
        laberinto.paint(g);
        personaje.paint(g);
     }
